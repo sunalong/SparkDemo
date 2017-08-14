@@ -2,6 +2,7 @@ package com.itcode.spark
 
 import java.net.URL
 
+import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
@@ -11,6 +12,8 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object UrlCount {
   def main(args: Array[String]): Unit = {
+    //从数据库中加载规则
+    val arr = Array("java.itcast.cn","php.itcast.cn","net.itcast.cn")
     val conf = new SparkConf().setAppName("urlCount").setMaster("local[2]")
     val sc = new SparkContext(conf)
 
@@ -31,12 +34,30 @@ object UrlCount {
     })
     println("rdd3:" + rdd3.collect().toBuffer)
 
-    val rdd4 = rdd3.groupBy(_._1).mapValues(it=>{
-      it.toList.sortBy(_._3).reverse.take(3)//在java中排序，数据量大时会爆
-    })
-    println("rdd4:" + rdd4.collect().toBuffer)
+//    sortInScala(rdd3)
+    sortInRDD(arr, rdd3)
+
 
     sc.stop()
   }
 
+  /**
+    * 在RDD中排序，如果数据量大，会放在文件中，不会让内存爆
+    * @param arr
+    * @param rdd3
+    */
+  private def sortInRDD(arr: Array[String], rdd3: RDD[(String, String, Int)]) = {
+    for (ins <- arr) {
+      val rdd = rdd3.filter(_._1 == ins)
+      val result = rdd.sortBy(_._3, false).take(3)
+      println("result:" + result.toBuffer)
+    }
+  }
+
+  private def sortInScala(rdd3: RDD[(String, String, Int)]) = {
+    val rdd4 = rdd3.groupBy(_._1).mapValues(it => {
+      it.toList.sortBy(_._3).reverse.take(3) //在java中排序，数据量大时会爆
+    })
+    println("rdd4:" + rdd4.collect().toBuffer)
+  }
 }
