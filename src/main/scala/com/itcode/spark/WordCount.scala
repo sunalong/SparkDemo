@@ -12,8 +12,14 @@ object WordCount {
     //通向spark集群的入口
     val sc = new SparkContext(conf)
 //    wordCount(args, sc)
-    combineByKeyTest(sc)//
+//    combineByKeyTest(sc)
+    foreachPartitionTest(sc)
     sc.stop()
+  }
+
+  private def foreachPartitionTest(sc: SparkContext) = {
+    val rdd1 = sc.parallelize(List(1, 2, 3, 4, 5, 6, 7, 8, 9), 3)
+    rdd1.foreachPartition(x => println(x.reduce(_ + _)))
   }
 
   private def wordCount(args: Array[String], sc: SparkContext) = {
