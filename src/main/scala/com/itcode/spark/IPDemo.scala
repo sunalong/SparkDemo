@@ -52,6 +52,21 @@ object IPDemo {
     }
     -1
   }
+  def binarySearch(linesArr: Array[(String,String,String)], ipNum: Long): Int = {
+    var low = 0
+    var high = linesArr.length - 1
+    while (low <= high) {
+      val middle = (low + high) / 2
+      val middleTupple = linesArr(middle)
+      if ((ipNum >= middleTupple._1.toLong) && (ipNum <= middleTupple._2.toLong))
+        return middle
+      if (ipNum < middleTupple._1.toLong)
+        high = middle - 1
+      else
+        low = middle + 1
+    }
+    -1
+  }
 
   def main(args: Array[String]): Unit = {
     val ip = "180.168.126.245"
