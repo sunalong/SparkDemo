@@ -1,5 +1,6 @@
 package com.itcode.spark
 
+import com.itcode.spark.utils.LoggerLevelsUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -9,6 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 object StreamingWordCount {
   def main(args: Array[String]): Unit = {
+    LoggerLevelsUtils.setStreamingLogLevels()
     val conf = new SparkConf().setAppName(this.getClass.getSimpleName).setMaster("local[2]")
     val sc = new SparkContext(conf)
     val ssc = new StreamingContext(sc, Seconds(5))
