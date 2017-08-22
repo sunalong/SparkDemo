@@ -93,8 +93,8 @@
     <orderEntry type="library" name="Maven: net.sf.py4j:py4j:0.9" level="project" />
     <orderEntry type="library" name="Maven: org.spark-project.spark:unused:1.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.spark:spark-streaming_2.10:1.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.spark:spark-streaming-flume_2.10:1.6.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.spark:spark-streaming-flume-sink_2.10:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.spark:spark-streaming-flume_2.11:1.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.spark:spark-streaming-flume-sink_2.11:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flume:flume-ng-core:1.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.flume:flume-ng-configuration:1.6.0" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.2" level="project" />
