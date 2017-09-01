@@ -23,7 +23,7 @@ object KafkaWordCount {
     val Array(zkQuorum, group, topics, numThreads) = args
     val sparkConf = new SparkConf().setAppName(this.getClass.getSimpleName).setMaster("local[2]")
     val ssc = new StreamingContext(sparkConf, Seconds(5))
-    ssc.checkpoint("~/ATest/fuck")
+    ssc.checkpoint("ATest/fuck")
     val topicMap = topics.split(",").map((_, numThreads.toInt)).toMap
     val data = KafkaUtils.createStream(ssc, zkQuorum, group, topicMap, StorageLevel.MEMORY_AND_DISK_SER)
     val words = data.map(_._2).flatMap(_.split(" "))
