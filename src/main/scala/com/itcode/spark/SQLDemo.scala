@@ -23,8 +23,14 @@ object SQLDemo {
     import sqlContext.implicits._
     val personDf = personRdd.toDF
     personDf.registerTempTable("person")
+    personDf.show()//显示DataFrame的内容
+    personDf.printSchema()//打印DataFrame模式
+    personDf.select("name").show()//选择名称列
+    personDf.select("name","id").show()
+    personDf.filter(personDf("id").equalTo(26)).show()//根据条件过滤
+    personDf.groupBy("id").count().show()//根据id统计数量
     sqlContext.sql("select * from person where money >= 200 order by money desc limit 20").show()
-    sc.stop()
+//    sc.stop()
   }
 }
 
