@@ -14,7 +14,6 @@ object SQLDemo {
     val sc = new SparkContext(conf)
     val sqlContext = new SQLContext(sc)
     System.setProperty("user.name", "hadoop")
-Array
     val personRdd = sc.textFile("hdfs://mini1:9000/person.txt").map(line => {
       val fields = line.split(",")
       Person(fields(0), fields(1).toLong, fields(2).toInt)

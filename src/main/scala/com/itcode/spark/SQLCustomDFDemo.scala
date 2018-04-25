@@ -12,7 +12,7 @@ object SQLCustomDFDemo {
     val conf = new SparkConf().setAppName("SQLDemo").setMaster("local")
     val sc = new SparkContext(conf)
     val sqlContext = new SQLContext(sc)
-    System.setProperty("user.name", "bigdata")
+    System.setProperty("user.name", "hadoop")
 
     import org.apache.spark.sql.types._
     // 用字符串编码模式
@@ -25,7 +25,8 @@ object SQLCustomDFDemo {
 
     // 将模式应用于RDD对象。
     val dfCustomers = sqlContext.createDataFrame(rowRDD, schema)
-    dfCustomers.registerTempTable("person")
+    //    dfCustomers.registerTempTable("person")//deprecated
+    dfCustomers.createOrReplaceTempView("person")
 
     dfCustomers.show() //显示DataFrame的内容
     dfCustomers.printSchema() //打印DataFrame模式
@@ -34,7 +35,9 @@ object SQLCustomDFDemo {
     dfCustomers.filter(dfCustomers("custom_id").equalTo(26)).show() //根据条件过滤
     dfCustomers.groupBy("custom_id").count().show() //根据id统计数量
 
-    sqlContext.sql("select * from person where costom_money >= 200 order by costom_money desc limit 20").show()
+    val df = sqlContext.sql("select * from person where costom_money >= 24 order by costom_money desc limit 2")
+    df.show()
+    df.write.json("hdfs://mini1:9000/personSTout")
     sc.stop()
   }
 }
