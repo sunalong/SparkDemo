@@ -8,14 +8,11 @@ import org.apache.spark.{SparkConf, SparkContext}
   * Email:466210864@qq.com
   */
 object SQLCustomDFDemo {
-
-
   def main(args: Array[String]) {
     val conf = new SparkConf().setAppName("SQLDemo").setMaster("local")
     val sc = new SparkContext(conf)
     val sqlContext = new SQLContext(sc)
     System.setProperty("user.name", "bigdata")
-
 
     import org.apache.spark.sql.types._
     // 用字符串编码模式

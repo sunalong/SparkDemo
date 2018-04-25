@@ -1,7 +1,8 @@
 package com.itcode.spark.utils
 
 import org.apache.log4j.{Level, Logger}
-import org.apache.spark.Logging
+import org.apache.spark.internal.Logging
+//import org.apache.spark.Logging
 
 /**
   * Created by along on 17/8/21 14:59.
