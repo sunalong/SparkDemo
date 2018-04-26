@@ -1,7 +1,7 @@
-package com.itcode.spark
+package com.itcode.spark.sql
 
-import org.apache.spark.{SparkConf, SparkContext}
 import org.apache.spark.sql.SQLContext
+import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   * Created by along on 17/9/1 11:52.

@@ -1,4 +1,4 @@
-package com.itcode.spark
+package com.itcode.spark.sql
 
 import org.apache.spark.sql.{Row, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}

@@ -1,11 +1,11 @@
-package com.itcode.spark
+package com.itcode.spark.sql
 
 import java.sql.DriverManager
 import java.util.Properties
 
 import org.apache.spark.rdd.JdbcRDD
-import org.apache.spark.sql.{Row, SQLContext}
 import org.apache.spark.sql.types.{IntegerType, StringType, StructField, StructType}
+import org.apache.spark.sql.{Row, SQLContext}
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
