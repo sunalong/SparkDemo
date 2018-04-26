@@ -1,4 +1,4 @@
-package com.itcode.spark
+package com.itcode.spark.streaming
 
 import java.net.InetSocketAddress
 

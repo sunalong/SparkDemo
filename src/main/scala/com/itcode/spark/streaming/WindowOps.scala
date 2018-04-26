@@ -1,4 +1,4 @@
-package com.itcode.spark
+package com.itcode.spark.streaming
 
 import com.itcode.spark.utils.LoggerLevelsUtils
 import org.apache.spark.SparkConf

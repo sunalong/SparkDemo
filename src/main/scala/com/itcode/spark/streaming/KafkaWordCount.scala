@@ -1,10 +1,10 @@
-package com.itcode.spark
+package com.itcode.spark.streaming
 
 import com.itcode.spark.utils.LoggerLevelsUtils
-import org.apache.spark.{HashPartitioner, SparkConf}
 import org.apache.spark.storage.StorageLevel
 import org.apache.spark.streaming.kafka.KafkaUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
+import org.apache.spark.{HashPartitioner, SparkConf}
 
 /**
   * Created by along on 17/8/22 17:54.
